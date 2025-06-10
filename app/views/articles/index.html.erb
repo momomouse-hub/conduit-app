@@ -1,6 +1,11 @@
 <div class="home-page">
   <div class="banner">
     <div class="container">
+      <% if logged_in? %>
+        <%= button_to "Sign out", signout_path, method: :delete, class: "btn btn-outline-danger" %>
+      <% else %>
+        <%= button_to "Sign in", signin_path, class: "btn btn-outline-primary" %>
+      <% end %>
       <h1 class="logo-font">conduit</h1>
       <p>A place to share your knowledge.</p>
     </div>

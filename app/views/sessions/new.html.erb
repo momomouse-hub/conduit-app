@@ -1,0 +1,23 @@
+<div class="auth-page">
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="text-xs-center">Sign in</h1>
+        <p class="text-xs-center">
+          <%= link_to "Need an account?", new_user_path %>
+          <%# <a href="/register">Need an account?</a> %>
+        </p>
+
+        <%= form_with url: signin_path, local: true, data: {turbo: false} do |form| %>
+          <fieldset class="form-group">
+            <%= form.email_field :email, class: "form-control form-control-lg", type: "text", placeholder: "Email"%>
+          </fieldset>
+          <fieldset class="form-group">
+            <%= form.password_field :password, class: "form-control form-control-lg", type: "password", placeholder: "Password"%>
+          </fieldset>
+          <%= form.submit "Sign in", class: "btn btn-lg btn-primary pull-xs-right"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

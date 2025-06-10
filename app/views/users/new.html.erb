@@ -1,0 +1,31 @@
+<div class="auth-page">
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="text-xs-center">Sign up</h1>
+        <p class="text-xs-center">
+          <%= link_to "Already have an account?", signin_path%>
+          <%# <a href="/register">Already have an account?</a> %>
+        </p>
+
+        <% if @user.errors.any? %>
+          <ul class="error-messages">
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end%>
+          </ul>
+        <% end %>
+
+        <%= form_with model: @user, local: true do |form| %>
+          <fieldset class="form-group">
+            <%= form.email_field :email, class: "form-control form-control-lg", type: "text", placeholder: "Email"%>
+          </fieldset>
+          <fieldset class="form-group">
+            <%= form.password_field :password, class: "form-control form-control-lg", type: "password", placeholder: "Password"%>
+          </fieldset>
+          <%= form.submit "Sign up", class: "btn btn-lg btn-primary pull-xs-right"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

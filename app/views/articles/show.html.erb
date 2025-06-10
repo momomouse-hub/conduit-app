@@ -2,15 +2,16 @@
   <div class="banner">
     <div class="container">
       <h1><%= @article.title %></h1>
-
-      <div class="article-meta" style="display: flex; gap: 10px; align-items: center;">
-        <%= link_to edit_article_path(@article), class: "btn btn-sm btn-outline-secondary" do %>
-          <i class="ion-edit"></i> Edit Article
-        <% end %>
-        <%= button_to @article, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-danger", form: { style: "display: inlile;" } do %>
-          <i class="ion-trash-a"></i> Delete Article
-        <% end %>
-      </div>
+      <% if logged_in? && current_user == @article.user %>
+        <div class="article-meta" style="display: flex; gap: 10px; align-items: center;">
+          <%= link_to edit_article_path(@article), class: "btn btn-sm btn-outline-secondary" do %>
+            <i class="ion-edit"></i> Edit Article
+          <% end %>
+          <%= button_to @article, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-danger", form: { style: "display: inline;" } do %>
+            <i class="ion-trash-a"></i> Delete Article
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 
@@ -20,8 +21,9 @@
         <p>
           <%= @article.description %>
         </p>
-        <h2 id="introducing-ionic">Introducing RealWorld.</h2>
-        <p>It's a great solution for learning how other frameworks work.</p>
+
+        <%= markdown(@article.body) %>
+
         <% if @article.tag_list.present? %>
           <ul class="tag-list">
             <% @article.tag_list.split(' ').each do |tag| %>

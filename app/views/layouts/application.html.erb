@@ -26,5 +26,6 @@
 
   <body>
     <%= yield %>
+    <p>ログインユーザー: <%= current_user&.email || "未ログイン" %></p>
   </body>
 </html>
