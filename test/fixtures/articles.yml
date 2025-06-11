@@ -2,10 +2,12 @@
 
 one:
   title: MyString
-  desctiption: MyString
+  description: MyString
   body: MyText
+  user: user_one
 
 two:
   title: MyString
-  desctiption: MyString
+  description: MyString
   body: MyText
+  user: user_two

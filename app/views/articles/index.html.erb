@@ -32,7 +32,7 @@
               <h1><%= article.title %></h1>
               <p><%= article.description %></p>
               <span>Read more...</span>
-              <p class="author"><%= article.user.name.presence || '' %></p>
+              <p class="author"><%= article.user.name.presence || 'No Author' %></p>
               <% if article.tag_list.present? %>
                 <ul class="tag-list">
                   <% article.tag_list.split(' ').each do |tag| %>
