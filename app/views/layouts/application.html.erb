@@ -27,5 +27,17 @@
   <body>
     <%= yield %>
     <p>ログインユーザー: <%= current_user&.email || "未ログイン" %></p>
+    <% if flash[:notice] %>
+      <script>
+        if (!sessionStorage.getItem("notice_shown")) {
+          alert("<%= j flash[:notice] %>");
+          sessionStorage.setItem("notice_shown", "true");
+        }
+
+        window.addEventListener("beforeunload", () => {
+          sessionStorage.removeItem("notice_shown");
+        });
+      </script>
+    <% end %>
   </body>
 </html>

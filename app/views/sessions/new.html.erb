@@ -5,8 +5,13 @@
         <h1 class="text-xs-center">Sign in</h1>
         <p class="text-xs-center">
           <%= link_to "Need an account?", new_user_path %>
-          <%# <a href="/register">Need an account?</a> %>
         </p>
+
+        <% if flash[:alert] %>
+          <ul class="error-messages">
+            <li><%= flash[:alert] %></li>
+          </ul>
+        <% end %>
 
         <%= form_with url: signin_path, local: true, data: {turbo: false} do |form| %>
           <fieldset class="form-group">

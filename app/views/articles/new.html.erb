@@ -2,11 +2,15 @@
   <div class="container page">
     <div class="row">
       <div class="col-md-10 offset-md-1 col-xs-12">
-        <ul class="error-messages">
-          <li>That title is required</li>
-        </ul>
+        <% if @article.errors.any? %>
+          <ul class="error-messages">
+            <% @article.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end%>
+          </ul>
+        <% end %>
 
-        <%= form_with model: @article, local: true do |form| %>
+        <%= form_with model: @article, local: true, data: {turbo: false} do |form| %>
           <fieldset>
             <fieldset class="form-group">
               <%= form.text_field :title, class: "form-control form-control-lg", placeholder: "Article Title" %>
