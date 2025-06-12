@@ -44,6 +44,7 @@ bin/rails db:create db:migrate db:seed
 
 # 4. サーバー起動
 bin/rails server
+```
 
 ## 👤 ユーザー機能
 
