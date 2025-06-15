@@ -13,7 +13,7 @@
           </ul>
         <% end %>
 
-        <%= form_with url: signin_path, local: true, data: {turbo: false} do |form| %>
+        <%= form_with url: signin_path, data: {turbo: false} do |form| %>
           <fieldset class="form-group">
             <%= form.email_field :email, class: "form-control form-control-lg", type: "text", placeholder: "Email"%>
           </fieldset>

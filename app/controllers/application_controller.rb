@@ -3,14 +3,8 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   helper_method :current_user, :logged_in?
 
-  # def current_user
-  #   @current_user ||= User.find_by(id: session[:user_id])
-  # end
-
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id]).tap do |u|
-      Rails.logger.debug "⭐ current_user = #{u.inspect}"
-    end
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 
   def logged_in?

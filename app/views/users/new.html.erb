@@ -15,7 +15,7 @@
           </ul>
         <% end %>
 
-        <%= form_with model: @user, local: true, data: {turbo: false} do |form| %>
+        <%= form_with model: @user, data: {turbo: false} do |form| %>
           <fieldset class="form-group">
             <%= form.text_field :name, class: "form-control form-control-lg", type: "text", placeholder: "Name"%>
           </fieldset>
